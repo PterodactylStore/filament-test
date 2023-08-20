@@ -22,6 +22,8 @@ class PostResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    //protected static ?string $recordRouteKeyName = 'slug->$locale';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -35,6 +37,9 @@ class PostResource extends Resource
                 Forms\Components\Textarea::make('description')
                     ->required()
                     ->maxLength(65535)
+                    ->columnSpanFull(),
+                Forms\Components\SpatieMediaLibraryFileUpload::make('post-image')
+                    ->collection('post-images')
                     ->columnSpanFull(),
             ]);
     }
